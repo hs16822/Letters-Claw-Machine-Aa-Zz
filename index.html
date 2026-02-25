@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alphabet Catcher</title>
+
+  <!-- LINK CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="machine-casing">
+    <div class="marquee-header">
+      <div class="info-box">TIME <span id="timer">--</span></div>
+      <div class="logo-area">ALPHABET CATCHER</div>
+      <div class="info-box">SCORE <span id="score">0</span></div>
+    </div>
+
+    <div class="glass-window">
+      <div class="gantry-rail"></div>
+      <div class="claw-assembly" id="claw-assembly">
+        <div class="claw-rod" id="claw-rod"></div>
+        <div class="claw-body">
+          <div class="finger left"></div>
+          <div class="finger right"></div>
+        </div>
+      </div>
+
+      <div class="chute">EXIT</div>
+      <div class="play-area" id="play-area"></div>
+      <div class="front-glass"></div>
+    </div>
+
+    <div class="control-panel">
+      <div class="side-panel left">
+        <button id="btn-menu" class="sys-btn start-btn">MENU</button>
+        <div class="sound-toggle">
+          <label><input type="checkbox" id="mute-toggle"> Mute</label>
+        </div>
+      </div>
+
+      <div class="main-controls">
+        <button class="arrow-btn" id="btn-left">⬅</button>
+        <button id="btn-grab" class="grab-btn" disabled>CATCH</button>
+        <button class="arrow-btn" id="btn-right">➡</button>
+      </div>
+
+      <div class="side-panel right">
+        <button id="btn-listen" class="sys-btn listen-btn">🔊 Listen</button>
+      </div>
+    </div>
+
+    <div id="letter-modal" class="modal" style="display: flex;">
+      <div class="modal-content large-content">
+        <h2>SELECT LETTERS</h2>
+        <p style="font-size: 2vh; margin-bottom: 2vh; color: #666;">Choose letters to practice:</p>
+
+        <div class="selection-tools">
+          <button class="tool-btn" onclick="toggleSelectAll(true)">Select All</button>
+          <button class="tool-btn" onclick="toggleSelectAll(false)">Clear</button>
+        </div>
+
+        <div class="letter-grid" id="letter-grid"></div>
+
+        <div style="margin-top: 3vh;">
+          <button class="confirm-btn" onclick="confirmLetters()">CONFIRM & NEXT ➡</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="timer-modal" class="modal">
+      <div class="modal-content">
+        <h2>SELECT TIME</h2>
+        <div class="timer-options">
+          <button class="time-btn" onclick="selectTime(30)">30s</button>
+          <button class="time-btn" onclick="selectTime(45)">45s</button>
+          <button class="time-btn" onclick="selectTime(60)">60s</button>
+          <button class="time-btn" onclick="selectTime(80)">80s</button>
+          <button class="time-btn" onclick="selectTime(90)">90s</button>
+        </div>
+        <button class="tool-btn" style="margin-top:20px" onclick="backToLetters()">⬅ BACK</button>
+      </div>
+    </div>
+
+    <div id="result-modal" class="modal">
+      <div class="modal-content">
+        <h2>TIME'S UP!</h2>
+        <p>Score: <span id="final-score">0</span></p>
+
+        <div style="display: flex; gap: 20px; justify-content: center; margin-top: 20px;">
+          <button onclick="playAgain()" class="sys-btn start-btn" style="width:auto; padding: 10px 20px;">🔄 Play Again</button>
+          <button onclick="showMenu()" class="sys-btn" style="width:auto; padding: 10px 20px; background:#a29bfe;">🏠 Menu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LINK JS：建議放在 body 最下面 -->
+  <script src="game.js"></script>
+</body>
+</html>
